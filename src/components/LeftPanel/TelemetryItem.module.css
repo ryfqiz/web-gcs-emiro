@@ -1,0 +1,46 @@
+.item {
+  /* Gunakan variabel bg-card */
+  background: var(--bg-card); 
+  border-radius: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.item:hover {
+  border-color: rgba(52, 152, 219, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: 10px;
+  color: var(--text-secondary); /* Gunakan variabel */
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary); /* Gunakan variabel (Hitam di Light, Putih di Dark) */
+  font-family: 'Courier New', monospace;
+}
+
+.highlight {
+  color: var(--accent-blue); /* Biru */
+}
+
+.unit {
+  font-size: 12px; /* Reduced from 13px */
+  color: #95a5a6;
+  font-weight: 600;
+  margin-left: 4px;
+  opacity: 0.8;
+}

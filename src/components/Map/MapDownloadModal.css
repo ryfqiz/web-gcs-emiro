@@ -1,0 +1,274 @@
+/* Overlay Gelap di Belakang Modal */
+.map-download-modal-overlay {
+  position: fixed; /* Wajib FIXED agar lepas dari container peta */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px); /* Efek blur modern */
+  z-index: 99999; /* Pastikan di atas Header & segalanya */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Kotak Modal Utama */
+.map-download-modal {
+  width: 90%;
+  max-width: 500px; /* Ukuran proporsional */
+  max-height: 90vh;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #1a2f4d;
+  font-weight: 700;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #adb5bd;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #dc3545;
+}
+
+/* Content Body */
+.modal-content {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section h3 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Map Type Selector */
+.map-type-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.map-type-selector label {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #495057;
+  transition: all 0.2s;
+}
+
+.map-type-selector label:hover {
+  background: #f1f3f5;
+}
+
+.map-type-selector label.active {
+  background: #1a2f4d; /* Warna Tema Biru Gelap */
+  color: white;
+  border-color: #1a2f4d;
+}
+
+.map-type-selector input {
+  display: none;
+}
+
+/* Zoom Selector Header */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.btn-small {
+  background: none;
+  border: none;
+  color: #3498db;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.btn-small:hover {
+  background: rgba(52, 152, 219, 0.1);
+}
+
+/* Grid Zoom Level */
+.zoom-selector {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 Kolom agar rapi */
+  gap: 8px;
+}
+
+.zoom-selector label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: #495057;
+  transition: all 0.2s;
+}
+
+.zoom-selector label:hover {
+  border-color: #3498db;
+}
+
+.zoom-selector label.active {
+  background: #3498db; /* Warna Aksen Biru */
+  color: white;
+  border-color: #3498db;
+}
+
+.zoom-selector input {
+  display: none;
+}
+
+.hint {
+  font-size: 11px;
+  color: #868e96;
+  margin-top: 8px;
+}
+
+/* Info Box */
+.cache-info {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 13px;
+  color: #495057;
+}
+
+.cache-info p {
+  margin: 4px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cache-info strong {
+  color: #212529;
+}
+
+/* Button Download */
+.btn-download {
+  width: 100%;
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+
+.btn-download:hover:not(:disabled) {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+}
+
+.btn-download:disabled {
+  background: #ced4da;
+  cursor: not-allowed;
+}
+
+/* Downloading & Complete State */
+.downloading, .complete {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.progress-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a2f4d;
+  margin: 16px 0;
+}
+
+.success-icon {
+  font-size: 48px;
+  color: #28a745;
+  margin-bottom: 16px;
+}
+
+.btn-done {
+  margin-top: 24px;
+  padding: 10px 32px;
+  background: #1a2f4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .zoom-selector {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

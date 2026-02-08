@@ -1,0 +1,120 @@
+/* Container Utama */
+.section {
+  margin-bottom: 16px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 14px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.section:hover {
+  /* Saat hover panel, border hanya sedikit lebih gelap (netral) */
+  border-color: #bdc3c7; 
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.sectionTitle {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- DROPDOWN (FLIGHT MODE) --- */
+.modeSelect {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: border-color 0.2s ease;
+  font-family: 'Courier New', monospace;
+  
+  /* Hapus default browser style yang bikin jelek */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Tambahkan icon panah custom sederhana di kanan agar user tahu ini dropdown */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+/* SAAT DIKLIK (FOCUS) - HILANGKAN SEMUA EFEK GLOW/HITAM */
+.modeSelect:focus {
+  outline: none;       /* Hapus garis hitam bawaan browser */
+  box-shadow: none;    /* Hapus bayangan biru/hitam */
+  border-color: #7f8c8d; /* Ganti warna border jadi abu-abu tua saja */
+  background-color: var(--bg-input); /* Pastikan background tidak berubah */
+}
+
+.modeSelect:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- TOMBOL CEPAT (QUICK MODES) --- */
+.quickModes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.quickBtn {
+  padding: 12px 5px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* SAAT HOVER TOMBOL - BERSIH TANPA BACKGROUND HITAM */
+.quickBtn:hover:not(:disabled) {
+  /* Pastikan background TETAP SAMA (tidak jadi hitam) */
+  background: var(--bg-input);
+  
+  /* Cuma pertegas border dan teks */
+  border-color: #7f8c8d;  /* Abu-abu tua */
+  color: var(--text-primary); /* Hitam/Putih (tergantung tema) */
+  
+  /* Hapus shadow/glow aneh-aneh */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+  transform: translateY(-1px);
+}
+
+.quickBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- TOMBOL RTL (KUNING) --- */
+.rtl {
+  /* Default: Kuning tipis sekali */
+  background: rgba(255, 193, 7, 0.05);
+  color: #d35400; /* Oranye gelap biar terbaca */
+  border-color: rgba(255, 193, 7, 0.5);
+}
+
+.rtl:hover:not(:disabled) {
+  /* Saat hover: Sedikit lebih kuning, tapi transparan */
+  background: rgba(255, 193, 7, 0.15); 
+  border-color: #f39c12;
+  color: #e67e22;
+  box-shadow: none;
+}

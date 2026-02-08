@@ -1,0 +1,321 @@
+/* --- CONTAINER UTAMA (Panel Style) --- */
+.mapPanelContainer {
+  /* BACKGROUND KARTU: Agar solid */
+  background-color: var(--bg-card);
+  
+  /* Styling Kartu */
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  /* Shadow halus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- HEADER --- */
+.mapHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.mapTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.headerStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Status Colors & Animation */
+.dotActive {
+  background-color: #2ecc71; /* Hijau */
+  box-shadow: 0 0 8px #2ecc71;
+  animation: pulse 2s infinite;
+}
+
+.dotWarning {
+  background-color: #f1c40f; /* Kuning (Waiting GPS) */
+}
+
+.dotOffline {
+  background-color: #e74c3c; /* Merah */
+}
+
+@keyframes pulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* --- WRAPPER KONTEN MAP --- */
+.mapContentWrapper {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-input);
+  overflow: hidden;
+}
+
+/* --- MAP CONTROLS --- */
+.mapControls {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1000;
+  display: flex;
+  gap: 8px;
+}
+
+.controlBtn {
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(52, 152, 219, 0.4);
+  border-radius: 4px;
+  color: #ecf0f1;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* HOVER NETRAL */
+.controlBtn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.controlBtn.active {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #ffffff;
+}
+
+.controlBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- STATUS OVERLAY --- */
+.mapStatusOverlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 1000;
+  display: flex;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statusGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.statusLabel {
+  font-size: 9px;
+  color: #bdc3c7;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statusValue {
+  font-size: 11px;
+  color: #ecf0f1;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+}
+
+.statusValue.gpsActive { color: #2ecc71; }
+.statusValue.gpsInactive { color: #e74c3c; }
+
+/* --- NO GPS WARNING --- */
+.noGpsWarning {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background: rgba(231, 76, 60, 0.9);
+  backdrop-filter: blur(4px);
+  padding: 15px 25px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.warningTitle {
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.warningText {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Custom Popup Leaflet */
+.customPopup .leaflet-popup-content-wrapper {
+  background: rgba(15, 23, 42, 0.95);
+  color: white;
+  border-radius: 6px;
+  padding: 0;
+  border: 1px solid var(--accent-blue);
+}
+.customPopup .leaflet-popup-tip {
+  background: var(--accent-blue);
+}
+
+.popupContent { min-width: 180px; padding: 10px; }
+.popupHeader {
+  font-size: 10px; font-weight: 800; color: var(--accent-blue);
+  border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 6px; padding-bottom: 4px;
+}
+.popupRow { display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 3px; }
+.popupLabel { color: #94a3b8; }
+.popupValue { color: #fff; font-family: monospace; }
+
+@media (max-width: 768px) {
+  .mapStatusOverlay {
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px;
+  }
+}
+
+/* ... kode sebelumnya biarkan tetap ada ... */
+
+/* --- GOOGLE MAPS STYLE CONTROLS (KANAN BAWAH) --- */
+.bottomRightControls {
+  position: absolute;
+  bottom: 24px;  /* Jarak dari bawah (di atas status bar) */
+  right: 12px;   /* Jarak dari kanan */
+  z-index: 1000; /* Agar di atas peta */
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Jarak antara grup tombol zoom dan recenter */
+}
+
+/* Grup Tombol (untuk Zoom In/Out yang menyatu) */
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+/* Tombol Individual */
+.floatBtn {
+  width: 32px;
+  height: 32px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.floatBtn:hover {
+  background: #f1f1f1;
+  color: #333;
+}
+
+.floatBtn:disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+/* Garis pemisah khusus untuk tombol zoom yang ditumpuk */
+.zoomDivider {
+  height: 1px;
+  background: #e6e6e6;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Tombol Recenter (Terpisah sendiri) */
+.recenterBtn {
+  border-radius: 4px; /* Sudut membulat penuh karena terpisah */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* Icon Recenter */
+.iconTarget {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  position: relative;
+}
+
+.iconTarget::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px; height: 4px;
+  background: #666;
+  border-radius: 50%;
+}
+
+.recenterBtn:hover .iconTarget {
+  border-color: #333;
+}
+.recenterBtn:hover .iconTarget::after {
+  background: #333;
+}
+
+/* Jika sedang tracking (Active), icon jadi biru */
+.activeRecenter .iconTarget {
+  border-color: #3498db;
+}
+.activeRecenter .iconTarget::after {
+  background: #3498db;
+}
