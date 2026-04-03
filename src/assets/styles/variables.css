@@ -1,0 +1,51 @@
+:root {
+  /* --- DEFAULT (DARK MODE) --- */
+  --bg-app: #0a192f;
+  --bg-panel: linear-gradient(135deg, rgba(10, 25, 47, 0.95), rgba(15, 35, 60, 0.95));
+  --bg-card: rgba(0, 61, 122, 0.3);
+  --bg-input: rgba(0, 0, 0, 0.4);
+  
+  --text-primary: #e0e0e0;
+  --text-secondary: #95a5a6;
+  --text-muted: #64748b;
+  
+  --border-color: rgba(52, 152, 219, 0.3);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  
+  --accent-blue: #4da6ff;
+  --success-green: #00ff88;
+  --warning-yellow: #ffcc00;
+  --danger-red: #ff3333;
+  --logo-filter: brightness(0) invert(1);
+}
+
+/* --- LIGHT MODE --- */
+[data-theme='light'] {
+  /* Background utama abu-abu sangat muda (biar mata tidak sakit) */
+  --bg-app: #f1f5f9; 
+  
+  /* Panel jadi putih bersih + shadow halus (Glassmorphism hilang di light mode biar bersih) */
+  --bg-panel: #ffffff; 
+  
+  /* Card di dalam panel jadi abu-abu muda */
+  --bg-card: #f8fafc;
+  
+  /* Input jadi putih dengan border */
+  --bg-input: #ffffff;
+  
+  /* Text jadi gelap (Slate 800) */
+  --text-primary: #1e293b; 
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  
+  /* Border lebih halus */
+  --border-color: #cbd5e1;
+  --shadow-color: rgba(148, 163, 184, 0.15);
+  
+  /* Aksen warna sedikit digelapkan biar terbaca di putih */
+  --accent-blue: #2563eb;
+  --success-green: #059669; 
+  --warning-yellow: #d97706;
+  --danger-red: #dc2626;
+  --logo-filter: none;
+}

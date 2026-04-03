@@ -1,0 +1,469 @@
+.emergencyStop {
+  position: fixed;
+  bottom: 140px;
+  right: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid var(--white);
+  background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: 
+    0 8px 20px rgba(255, 51, 51, 0.5),
+    0 0 0 0 rgba(255, 51, 51, 0.7);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  animation: emergencyPulse 2s infinite;
+  position: relative;
+}
+
+.emergencyStop:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 
+    0 12px 30px rgba(255, 51, 51, 0.7),
+    0 0 40px rgba(255, 51, 51, 0.5);
+  animation: none;
+}
+
+.emergencyStop:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.emergencyStop:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  animation: none;
+  background: #666;
+  border-color: #888;
+}
+
+.icon {
+  font-size: 32px;
+  line-height: 1;
+  animation: iconBlink 1s infinite;
+}
+
+.text {
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.processingDot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 12px;
+  color: #f1c40f;
+  animation: processingBlink 0.5s infinite;
+}
+
+/* KILL BUTTON */
+.killButton {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #000;
+  background: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(255, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  animation: killPulse 3s infinite;
+  position: relative;
+}
+
+.killButton:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.9),
+    0 0 50px rgba(255, 0, 0, 0.8);
+  animation: none;
+  background: linear-gradient(135deg, #000000 0%, #8b0000 100%);
+}
+
+.killButton:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.killButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  animation: none;
+  background: #333;
+  border-color: #666;
+}
+
+.killIcon {
+  font-size: 36px;
+  line-height: 1;
+  animation: killIconBlink 2s infinite;
+}
+
+.killText {
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #ff0000;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+/* KILL MODAL */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease;
+}
+
+.modalKill {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 3px solid #8b0000;
+  border-radius: 16px;
+  padding: 32px;
+  min-width: 500px;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(255, 0, 0, 0.5);
+  animation: scaleIn 0.3s ease;
+  color: var(--white);
+}
+
+.modalHeader {
+  margin-bottom: 24px;
+}
+
+.modalIcon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 12px;
+  animation: killIconBlink 1.5s infinite;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #ff0000;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+  letter-spacing: 2px;
+}
+
+.modalContent {
+  margin-bottom: 24px;
+}
+
+.warningBox {
+  background: rgba(255, 0, 0, 0.2);
+  border: 2px solid #ff0000;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  animation: warningPulse 2s infinite;
+}
+
+.warningBox p {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.warningBox strong {
+  font-size: 16px;
+  color: #ff0000;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+.statusInfo {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.statusItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.statusValue {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  color: #f39c12;
+}
+
+.consequenceBox {
+  background: rgba(255, 69, 0, 0.1);
+  border: 1px solid rgba(255, 69, 0, 0.4);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.consequenceBox p {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #ff4500;
+  font-weight: 700;
+}
+
+.consequenceBox ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.consequenceBox li {
+  padding: 6px 0 6px 24px;
+  font-size: 13px;
+  position: relative;
+  color: #ecf0f1;
+}
+
+.consequenceBox li::before {
+  content: '⚠️';
+  position: absolute;
+  left: 0;
+}
+
+.confirmPrompt {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f1c40f;
+  margin: 20px 0 12px 0;
+}
+
+.confirmInput {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff0000;
+  border-radius: 8px;
+  color: #ff0000;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 3px;
+}
+
+.confirmInput:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  border-color: #ff4500;
+}
+
+.confirmInput::placeholder {
+  color: rgba(255, 0, 0, 0.4);
+}
+
+.modalActions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.btnKillConfirm,
+.btnKillCancel {
+  flex: 1;
+  padding: 16px 24px;
+  font-weight: 900;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.btnKillConfirm {
+  background: linear-gradient(135deg, #8b0000 0%, #000000 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(139, 0, 0, 0.6);
+}
+
+.btnKillConfirm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 0, 0, 0.8);
+  background: linear-gradient(135deg, #ff0000 0%, #8b0000 100%);
+}
+
+.btnKillCancel {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.6);
+}
+
+.btnKillCancel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(44, 62, 80, 0.8);
+  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+}
+
+/* ANIMATIONS */
+@keyframes emergencyPulse {
+  0%, 100% {
+    box-shadow: 
+      0 8px 20px rgba(255, 51, 51, 0.5),
+      0 0 0 0 rgba(255, 51, 51, 0.7);
+  }
+  50% {
+    box-shadow: 
+      0 8px 20px rgba(255, 51, 51, 0.5),
+      0 0 0 15px rgba(255, 51, 51, 0);
+  }
+}
+
+@keyframes killPulse {
+  0%, 100% {
+    box-shadow: 
+      0 8px 20px rgba(0, 0, 0, 0.8),
+      0 0 30px rgba(255, 0, 0, 0.6);
+  }
+  50% {
+    box-shadow: 
+      0 8px 20px rgba(0, 0, 0, 0.8),
+      0 0 50px rgba(255, 0, 0, 0.9);
+  }
+}
+
+@keyframes iconBlink {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes killIconBlink {
+  0%, 60%, 100% {
+    opacity: 1;
+  }
+  30%, 90% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes processingBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes warningPulse {
+  0%, 100% {
+    border-color: #ff0000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+  }
+  50% {
+    border-color: #ff4500;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .emergencyStop {
+    width: 80px;
+    height: 80px;
+    bottom: 120px;
+    right: 20px;
+  }
+
+  .killButton {
+    width: 80px;
+    height: 80px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .icon, .killIcon {
+    font-size: 24px;
+  }
+
+  .text, .killText {
+    font-size: 12px;
+  }
+
+  .modalKill {
+    min-width: 90%;
+    padding: 24px;
+  }
+
+  .modalHeader h2 {
+    font-size: 18px;
+  }
+
+  .modalActions {
+    flex-direction: column;
+  }
+
+  .btnKillConfirm,
+  .btnKillCancel {
+    padding: 12px;
+    font-size: 14px;
+  }
+}

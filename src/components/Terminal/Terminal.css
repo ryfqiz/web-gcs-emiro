@@ -1,0 +1,65 @@
+.terminal-container {
+  width: 100%;
+  height:  100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-content {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 35px; /* ADD THIS:  Space for status bar */
+  box-sizing: border-box;
+}
+
+/* XTerm styles override */
+.terminal-content .xterm {
+  height: 100% !important;
+  padding:  8px;
+}
+
+.terminal-content .xterm-viewport {
+  overflow-y: auto ! important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(52, 152, 219, 0.6) rgba(15, 30, 45, 0.5);
+}
+
+/* Custom scrollbar untuk terminal */
+.terminal-content .xterm-viewport::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-content .xterm-viewport::-webkit-scrollbar-track {
+  background:  rgba(15, 30, 45, 0.5);
+  border-radius: 4px;
+}
+
+.terminal-content .xterm-viewport::-webkit-scrollbar-thumb {
+  background: rgba(52, 152, 219, 0.6);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.terminal-content .xterm-viewport::-webkit-scrollbar-thumb:hover {
+  background: rgba(52, 152, 219, 0.8);
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+}
+
+/* Ensure terminal text is always visible */
+.terminal-content .xterm-screen {
+  padding-bottom: 10px;
+}
+
+/* Terminal cursor */
+.terminal-content .xterm-cursor-layer .xterm-cursor-block {
+  background-color: #64ffda ! important;
+}
+
+.terminal-content .xterm-cursor-layer .xterm-cursor-outline {
+  border-color: #64ffda ! important;
+}
+
+/* Selection color */
+.terminal-content .xterm-selection div {
+  background-color: rgba(100, 255, 218, 0.3) !important;
+}

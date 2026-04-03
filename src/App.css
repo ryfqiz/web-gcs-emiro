@@ -1,0 +1,151 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-app); /* Menggunakan variabel */
+  color: var(--text-primary);      /* Menggunakan variabel */
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.main-content {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  width: 100%;
+}
+
+/* UPDATE PENTING: Semua Panel menggunakan variabel tema */
+.left-panel,
+.center-panel,
+.right-panel {
+  background: var(--bg-panel); /* Tidak lagi hardcoded gradient */
+  border-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 16px var(--shadow-color);
+  height: 100%;
+  min-width: 0;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Center Panel Specifics */
+.center-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
+  scroll-behavior: smooth;
+}
+
+/* Empty State */
+.empty-state {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 0;
+}
+
+.empty-content {
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.empty-content svg {
+  margin-bottom: 20px;
+  opacity: 0.5;
+  stroke: var(--accent-blue);
+}
+
+.empty-content h3 {
+  color: var(--accent-blue);
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.empty-content p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* Layout Logic for Center Panel */
+.center-panel > *:only-child {
+  flex: 1;
+  min-height: 100%;
+}
+
+.center-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
+  scroll-behavior: smooth;
+  
+  /* UBAH INI: Hilangkan background, border, shadow */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.center-panel > *:not(:only-child) {
+  flex: 1;
+  min-height: 350px;
+}
+
+/* Scrollbar styling */
+.left-panel::-webkit-scrollbar,
+.right-panel::-webkit-scrollbar,
+.center-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.left-panel::-webkit-scrollbar-track,
+.right-panel::-webkit-scrollbar-track,
+.center-panel::-webkit-scrollbar-track {
+  background: var(--bg-app);
+  border-radius: 3px;
+}
+
+.left-panel::-webkit-scrollbar-thumb,
+.right-panel::-webkit-scrollbar-thumb,
+.center-panel::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.left-panel::-webkit-scrollbar-thumb:hover,
+.right-panel::-webkit-scrollbar-thumb:hover,
+.center-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* Responsive & Utilities tetap sama */
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 8px;
+}
+
+@media (max-width: 991px) {
+  .main-content {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+    padding: 10px;
+    overflow-y: auto;
+  }
+}

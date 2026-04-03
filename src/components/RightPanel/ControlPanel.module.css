@@ -1,0 +1,112 @@
+.controlPanel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  overflow: hidden; /* Pastikan rounded corner panel utama tetap terlihat */
+}
+
+/* Judul Panel */
+.title {
+  margin: 0;
+  padding: 10px 15px 8px 15px;
+  font-size: 16px; /* Sedikit diperkecil agar proporsional */
+  font-weight: 800;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 1px solid var(--border-color); /* Garis tipis saja */
+  background: var(--bg-card);
+}
+
+/* STICKY TOP CONTROLS (Emergency Stop Area) */
+.stickyControls {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-card); /* Background disamakan dengan card agar menyatu */
+  
+  /* HILANGKAN GARIS PEMISAH DI SINI */
+  border-bottom: none; 
+  box-shadow: none;
+  
+  padding: 10px 10px 0 10px; /* Padding bawah 0 agar rapat dengan konten bawahnya */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* SCROLLABLE CONTROLS */
+.scrollableControls {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px; /* Padding disamakan */
+  scrollbar-width: none;
+  background: var(--bg-card); /* Background disamakan agar terlihat satu kesatuan */
+}
+
+.scrollableControls::-webkit-scrollbar {
+  display: none;
+}
+
+/* SECTION DEFAULT STYLING */
+.section {
+  margin-bottom: 12px;
+  background: var(--bg-input); /* Gunakan bg-input agar kontras sedikit dengan bg-card utama */
+  border-radius: 6px;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.sectionTitle {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* EMERGENCY STOP BUTTON */
+.emergencyStop {
+  width: 100%;
+  padding: 10px;
+  
+  /* --- TAMBAHKAN MARGIN INI --- */
+  margin-top: 0px;    /* Jarak ke elemen atasnya */
+  margin-bottom: 0px; /* Jarak ke bawah agar tidak mepet border kartu */
+  /* ---------------------------- */
+
+  border: 2px solid #e74c3c;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ff3333 0%, #cc0000 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 3px 8px rgba(255, 51, 51, 0.3);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* ... (Kode hover & disabled tetap sama) ... */
+.emergencyStop:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(255, 51, 51, 0.5);
+}
+
+.emergencyStop:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+}
+
+.emergencyStop .icon {
+  font-size: 18px;
+}

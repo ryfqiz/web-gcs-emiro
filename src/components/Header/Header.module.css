@@ -1,0 +1,232 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  
+  /* Menggunakan variabel agar berubah sesuai tema */
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  
+  box-shadow: 0 2px 8px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: 56px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 38px;
+  width: auto;
+  margin-right: 12px;
+  object-fit: contain;
+  
+  /* PERBAIKAN DI SINI: */
+  /* Gunakan variabel --logo-filter. */
+  /* Fallback-nya adalah untuk Dark Mode (Jadi Putih) jika variabel belum ada */
+  filter: var(--logo-filter, brightness(0) invert(1));
+  
+  transition: all 0.3s ease;
+}
+
+.logoImage:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin: 0;
+  letter-spacing: 1.5px;
+  text-shadow: 0 1px 4px var(--shadow-color);
+}
+
+/* --- BUTTONS & STATUS --- */
+
+.btnLogout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 42px;
+  height: 42px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--danger-red);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 8px;
+}
+
+.btnLogout:hover {
+  background: var(--bg-card);
+  border-color: var(--danger-red);
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+.btnLogout svg {
+  width: 20px;
+  height: 20px;
+}
+
+.connectionPanel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.statusIndicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  height: 42px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+}
+
+.statusIndicator:has(.connected) {
+  border-color: #2ecc71;
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+}
+
+.statusIndicator:has(.disconnected) {
+  border-color: var(--danger-red);
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger-red);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.statusDot.connected {
+  background-color: #2ecc71;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+  animation: pulse 2s infinite;
+}
+
+.statusDot.disconnected {
+  background-color: var(--danger-red);
+  box-shadow: 0 0 6px rgba(231, 76, 60, 0.5);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.15); }
+}
+
+.statusText {
+  font-size: 13px;
+  font-weight: 700;
+  color: inherit;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.infoChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 42px;
+  background: var(--bg-input);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.chipLabel {
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.chipValue {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  font-family: 'Courier New', monospace;
+}
+
+.btnDisconnect {
+  padding: 0 18px;
+  height: 42px;
+  background: var(--danger-red);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.btnDisconnect:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.menuBtn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--accent-blue);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.menuBtn:hover {
+  border-color: var(--accent-blue);
+  background: var(--bg-card);
+  transform: translateY(-1px);
+}
+
+.menuBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .statusIndicator, .infoChip, .btnDisconnect, .menuBtn, .btnLogout {
+    height: 36px;
+    font-size: 11px;
+  }
+  .btnLogout, .menuBtn {
+    width: 36px;
+  }
+  .logoImage {
+    height: 30px;
+    margin-right: 8px;
+  }
+}

@@ -1,0 +1,250 @@
+/* Container Utama */
+.videoContainer {
+  /* BACKGROUND KARTU: Agar solid dan terlihat seperti kartu */
+  background-color: var(--bg-card); 
+  
+  /* Styling Kartu */
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  /* Shadow halus */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* ... (Kode Fullscreen dan lainnya biarkan sama/copy ulang) ... */
+.fullscreen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 9999;
+  border-radius: 0; border: none;
+  background: #000;
+}
+
+.videoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.videoTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.streamStatus {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.streamDot {
+  width: 8px; height: 8px;
+  background-color: var(--danger-red);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.videoWrapper {
+  position: relative;
+  flex: 1;
+  background-color: #000000 !important; 
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.videoElement {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+
+.videoPlaceholder {
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.noSignal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #b0b0b0; 
+  opacity: 1;
+  max-width: 500px;
+}
+
+.noSignalIconSvg {
+  width: 80px; height: 80px;
+  color: #e74c3c; 
+  opacity: 0.5; 
+  margin-bottom: 15px;
+  stroke-width: 1.5;
+  animation: pulseIcon 3s infinite ease-in-out;
+}
+
+@keyframes pulseIcon {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+}
+
+.noSignalIcon {
+  font-size: 24px;
+  margin-bottom: 5px;
+  font-weight: 800;
+  color: #e74c3c; 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.noSignal p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #ffffff; 
+  opacity: 0.9;
+}
+
+.noSignal small {
+  font-size: 11px;
+  opacity: 0.6;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  display: block;
+  color: #cccccc; 
+}
+
+.videoControls {
+  display: flex;
+  gap: 8px;
+  padding: 10px 15px;
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.controlBtn {
+  flex: 1;
+  min-width: 80px;
+  padding: 8px 12px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.controlBtn:hover:not(:disabled) {
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.controlBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.recording {
+  background-color: var(--danger-red) !important;
+  color: #ffffff !important;
+  animation: recordPulse 1s infinite;
+  border-color: var(--danger-red) !important;
+}
+
+@keyframes recordPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.videoLayout { width: 100%; height: 100%; display: flex; position: relative; }
+.layoutsingle { justify-content: center; align-items: center; }
+.layoutpip { flex-direction: row; gap: 10px; padding: 10px; }
+.pipMain { flex: 1; display: flex; position: relative; min-width: 0; }
+.pipSidebar { width: 200px; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; }
+.layoutgrid { padding: 10px; }
+.gridContainer { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 10px; width: 100%; height: 100%; }
+
+.cameraStream {
+  position: relative;
+  background-color: #000;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+}
+.cameraStream.primary { width: 100%; height: 100%; border: 2px solid var(--accent-blue); }
+.cameraStream.secondary { width: 100%; height: 150px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s ease; }
+.cameraStream.secondary:hover { border-color: var(--accent-blue); transform: scale(1.02); }
+
+.streamLabel {
+  position: absolute; top: 8px; left: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--accent-blue);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+
+.recordingIndicator {
+  position: absolute; top: 8px; right: 8px;
+  background: rgba(231, 76, 60, 0.8);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex; align-items: center; gap: 6px;
+  z-index: 10;
+}
+.recDot { width: 6px; height: 6px; background: white; border-radius: 50%; animation: pulse 1s infinite; }
+
+@media (max-width: 768px) {
+  .videoContainer { min-height: 300px; }
+  .videoControls { gap: 6px; padding: 8px 12px; }
+  .controlBtn { flex: 1 1 calc(50% - 3px); font-size: 10px; padding: 6px 8px; }
+  .layoutpip { flex-direction: column; }
+  .pipSidebar { width: 100%; flex-direction: row; height: auto; overflow-x: auto; }
+  .cameraStream.secondary { min-width: 150px; height: 100px; }
+}

@@ -1,0 +1,319 @@
+.container {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Tab Bar */
+.tabBar {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-input);
+  padding: 2px;
+  border-radius: 6px 6px 0 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+}
+
+.tabBar::-webkit-scrollbar {
+  display: none;
+}
+
+.tabButton {
+  flex: 1;
+  min-width: fit-content;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.tabButton:hover {
+  background: var(--bg-card);
+  color: var(--accent-blue);
+}
+
+.tabButton.active {
+  background: var(--bg-card);
+  color: var(--accent-blue);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Tab Content */
+.tabContent {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+}
+
+/* Custom Scrollbar */
+.tabContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tabContent::-webkit-scrollbar-track {
+  background: var(--bg-app);
+  border-radius: 3px;
+  margin: 4px 0;
+}
+
+.tabContent::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.tabContent::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* --- STATE GRID --- */
+.dataGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.dataCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 12px 8px;
+  min-height: 80px;
+  transition: all 0.3s ease;
+}
+
+.cardLabel {
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 6px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.cardValue {
+  font-size: 30px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.dataCard.purple .cardValue { color: #a78bfa; }
+.dataCard.orange .cardValue { color: #fbbf24; }
+.dataCard.cyan .cardValue { color: #22d3ee; }
+.dataCard.yellow .cardValue { color: #facc15; }
+.dataCard.green .cardValue { color: #34d399; }
+.dataCard.pink .cardValue { color: #f472b6; }
+.dataCard.blue .cardValue { color: #60a5fa; }
+
+
+/* --- GPS & RTK UPDATE (Label Besar, Kotak Compact) --- */
+.gpsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Jarak antar elemen dirapatkan sedikit */
+}
+
+.gpsStatusRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Jarak antar kotak dirapatkan */
+}
+
+.gpsStatusItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 12px 16px; /* Padding sedikit dikurangi biar ga kegedean */
+  border-radius: 8px;
+  min-height: 55px;   /* Tinggi dikurangi sedikit biar compact */
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+/* UPDATE LABEL: LEBIH BESAR & JELAS */
+.gpsLabel {
+  font-size: 13px; /* Diperbesar dari 11px */
+  color: var(--text-secondary);
+  font-weight: 800; /* Lebih tebal */
+  text-transform: uppercase;
+  margin-bottom: 0;
+  letter-spacing: 0.5px;
+}
+
+/* UPDATE VALUE: SEDIKIT DIKECILKAN DARI 28px */
+.gpsValue {
+  font-size: 22px; /* Turun dari 28px ke 22px agar proporsional */
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  color: var(--text-primary);
+}
+
+.gpsValueLarge {
+  font-size: 22px; /* Sama dengan gpsValue */
+  font-weight: 900;
+  font-family: 'Courier New', monospace;
+  color: var(--accent-blue);
+}
+
+/* RTK Control */
+.rtkControlRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 12px 16px; 
+  border-radius: 6px;
+  margin-top: 2px;
+}
+
+.rtkLabel {
+  font-size: 13px; /* Diperbesar */
+  color: var(--text-primary);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.rtkButton {
+  padding: 6px 16px;
+  border: 2px solid;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.rtkButton.rtkEnabled {
+  background: rgba(46, 204, 113, 0.2);
+  border-color: #2ecc71;
+  color: #2ecc71;
+}
+
+.rtkButton.rtkDisabled {
+  background: var(--bg-input);
+  border-color: var(--text-secondary);
+  color: var(--text-secondary);
+}
+
+.rtkButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Quality Section */
+.qualitySection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 14px 16px;
+  border-radius: 6px;
+  margin-top: 2px;
+}
+
+.qualityLabel {
+  font-size: 13px; /* Diperbesar */
+  color: var(--text-secondary);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.qualityBar {
+  height: 10px;
+  background: var(--bg-input);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.qualityFill {
+  height: 100%;
+  transition: all 0.5s ease;
+  border-radius: 6px;
+}
+
+.qualityText {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 700;
+  text-align: right;
+  font-family: 'Courier New', monospace;
+  margin-top: 2px;
+}
+
+/* Servo Tab Wrapper */
+.servoTabWrapper {
+  margin: -12px;
+}
+
+/* Placeholder Tabs */
+.placeholderTab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 8px;
+}
+
+.placeholderText {
+  font-size: 16px;
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.placeholderSubtext {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tabButton {
+    font-size: 9px;
+    padding: 6px 10px;
+  }
+  .cardValue {
+    font-size: 24px;
+  }
+  .gpsValue, .gpsValueLarge {
+    font-size: 18px; /* Kecilkan sedikit di mobile */
+  }
+  .tabContent {
+    padding: 10px;
+  }
+}

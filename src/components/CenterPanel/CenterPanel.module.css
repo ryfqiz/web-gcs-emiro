@@ -1,0 +1,33 @@
+.centerPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  
+  /* Jarak antar panel */
+  gap: 12px; 
+  
+  /* HILANGKAN BACKGROUND PUTIH/HITAM */
+  /* Transparan agar warna mengikuti background body (abu-abu aplikasi) */
+  background: transparent !important; 
+  
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.videoSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: transparent;
+}
+
+.mapSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: transparent;
+}
